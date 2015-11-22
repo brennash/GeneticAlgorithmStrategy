@@ -1,2 +1,2 @@
 # GeneticAlgorithmStrategy
-GA-driven strategy code
+GA-driven strategy code, to select an optimum spread strategy. 
