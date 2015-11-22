@@ -35,14 +35,22 @@ class GeneticAlgorithmStrategy:
 		keys = ['SingleAmount', 'DoubleAmount', 'TrebleAmount', 'AccumAmount']
 
 		values = []
-		values.append(0.5-random.random())
-		values.append(0.5-random.random())
-		values.append(0.5-random.random())
+		values.append((0.5-random.random())/len(keys))
+		values.append((0.5-random.random())/len(keys))
+		values.append((0.5-random.random())/len(keys))
 		total = sum(values)
 		values.append(-1.0*total)
-		print values
-
 		
+		randomValues = random.sample(values, len(values))
+
+		for index, key in enumerate(keys):
+			self.params[key] += values[index]
+			if self.params[key] < 0.0:
+				self.params[key] = 0.0
+			elif self.params[key] > 1.0:
+				self.params[key] = 1.0
+
+			print self.params[key],key
 
 	def mutateParam(self, key, limit):
 		self.params[key] += (random.random()*limit) - (limit/2.0)
